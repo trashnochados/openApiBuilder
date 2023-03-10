@@ -1,9 +1,17 @@
 {
-  "name": "app",
-  "version": "1.0.0",
+  "name": "@trashnochados/openApiBuilder",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "publishConfig": {
+      "registry": "https://npm.pkg.github.com"
+  },
+  "main": "dist/index.js",
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/trashnochados/openApiBuilder.git"
+  },
   "scripts": {
     "test": "jest ./tests",
     "lint": "yarn eslint --ext .js index.js"
@@ -12,8 +20,7 @@
     "node": ">=16.0.0",
     "yarn": " >=1.22.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^8.35.0",
     "jest": "^29.4.3"
