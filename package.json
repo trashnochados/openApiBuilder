@@ -7,7 +7,7 @@
   "publishConfig": {
       "registry": "https://npm.pkg.github.com"
   },
-  "main": "dist/index.js",
+  "main": "index.js",
   "repository": {
       "type": "git",
       "url": "git+https://github.com/trashnochados/openApiBuilder.git"
