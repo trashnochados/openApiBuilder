@@ -231,7 +231,7 @@ export function parseMethods(openAPIMethodSpecList, handlers) {
         process.exit(1); //eslint-disable-line
       }
       const localParameters = openAPIMethodSpecList[method].parameters || [];
-      const finalParams = parseParameters(localParameters.concat(globalParameters));
+      const finalParams = parseParameters(localParameters.concat(globalParameters)); //eslint-disable-line
       return {
         method: method.toUpperCase(),
         schema: {
