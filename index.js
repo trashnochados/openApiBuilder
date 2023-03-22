@@ -110,10 +110,10 @@ export function filterReadOnlyProperties(schema) {
     return {};
   }
   let schemaProperties = schema.properties;
-  let filteredRequiredProperties = schema.required;
+  let filteredRequiredProperties = schema.required || [];
   if (schema.type === 'array') { // if it's an array we go into the items
     schemaProperties = schema.items.properties;
-    filteredRequiredProperties = schema.items.required;
+    filteredRequiredProperties = schema.items.required || [];
   }
   const filteredPropertiesArray = Object.keys(JSON.parse(JSON.stringify(schemaProperties)))
     .filter((propertyKey) => !schemaProperties[propertyKey].readOnly);
@@ -250,9 +250,10 @@ export function parseMethods(openAPIMethodSpecList, handlers) {
  * @param {object} handlers - Mixin containing all handlers defined.
  * @returns {array} - The array of all route definitions ready to be injected inside Fastify
  */
-export default function routesFromOpenApiSpecs(openAPiRawSpecs, handlers) {
+export default function routesFromOpenApiSpecs(openAPiSpecs, handlers) {
   const routes = [];
   console.info('Parsing references'); // eslint-disable-line no-console
+  const openAPiRawSpecs = JSON.parse(JSON.stringify(openAPiSpecs));
   openAPiRawSpecs.components = openAPiRawSpecs.components || {}; // We set the component property at empty if non-existant
   const specs = resolveInternalReferences(openAPiRawSpecs);
   console.info('Parsing routes from the OpenAPI Specs'); // eslint-disable-line no-console
